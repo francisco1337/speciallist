@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}   
+
+{% block contend_main %}
+<!-- COTENT CONTAINER -->
+<div class="container p-160-cont pt-sm-60">
+
+  <!-- LOGIN / REGISTER CONTAINER -->
+  <div class="row">
+    
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 tabs-6">
+      
+      <!-- REGISTRY FORM -->   
+      <form id="reg-form" method="POST">{% csrf_token %}
+        <div class="row mt-30">
+          {% for field in form  %}
+            <div class="col-md-12 mb-15">
+              {{field}}
+            </div>
+            {{field.errors}}                      
+          {% endfor %}
+          <!-- SEND BUTTON -->
+          <div class="col-md-12">
+            <input type="submit" value="REGISTRARME" class="button rounded medium gray font-open-sans btn-block mb-15">
+          </div>
+              
+        </div>
+       
+    </form>
+    <!-- END REGISTRY FORM -->
+  
+    </div>   
+
+  </div>
+
+</div>
+
+{% endblock  %}
+        
+	        
+
+
+        
+        
+				
+        

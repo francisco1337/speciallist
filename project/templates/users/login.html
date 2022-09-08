@@ -1,0 +1,75 @@
+
+{% extends 'base.html' %}   
+
+{% block contend_main %}
+<!-- COTENT CONTAINER -->
+<div class="container p-160-cont pt-sm-60">
+
+  <!-- LOGIN / REGISTER CONTAINER -->
+  <div class="row">
+    
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 tabs-6">
+
+      <!-- LOGIN FORM -->                            
+      <form id="login-form" method="POST">{% csrf_token %}
+              
+        <!-- INPUTS -->
+        <div class="row mt-30">
+          
+          {% for field in form.errors %}
+              {{field.keys}}
+          {% endfor %}
+            
+            
+          {% for field in form  %}
+            <div class="col-md-12 mb-15">
+              {{field}}
+            </div>
+            {{field.errors}}                      
+          {% endfor %}
+              
+        </div>
+        
+        <!-- BUTTONS -->
+        <div class="row">
+          <div class="col-md-6 text-sm-center mb-20 mb-sm-10">
+            <a class="pt-10" href="#"><small>Forgot password?</small></a>
+          </div>
+          
+          <div class="col-md-6 mb-50 text-sm-center text-right">
+            <input id="remember-me" name="rememberme" type="checkbox" style="vertical-align:middle; margin:0" value="true">
+            <label class="font-norm" for="remember-me"><small>Remember me</small></label>
+          </div>
+
+          <div class="col-md-12">
+            <input type="submit" value="LOGIN" class="button rounded medium gray font-open-sans btn-block">
+          </div>
+        </div>
+        
+      </form>
+      
+      <!-- SOCIAL LOGIN -->
+      <div class="text-center mt-10 mb-10">
+        <small class="text-center font-open-sans">or login with</small>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 mb-15"><a class="button medium color-facebook rounded btn-block text-center plr-0" href="#">FACEBOOK</a></div>
+        <div class="col-sm-6 mb-15"><a class="button medium color-twitter rounded btn-block text-center plr-0" href="#">TWITTER</a></div>
+      </div>
+      <!-- END LOGIN FORM -->
+  
+    </div>   
+
+  </div>
+
+</div>
+
+{% endblock  %}
+        
+	        
+
+
+        
+        
+				
+        

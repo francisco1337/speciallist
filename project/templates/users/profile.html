@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}   
+
+{% block contend_main %}
+<!-- COTENT CONTAINER -->
+<div class="container p-160-cont pt-sm-60">
+  <!-- PERFIL -->
+  <div class="row">
+                
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 tabs-6">
+      <h4>MI INFORMACIÓN</h4>
+        <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+            {% if form.instance.image %}
+              <div class="lightbox-item">
+                <a href="{{ form.instance.image.url }}" class="lightbox">
+                  <div class="port-img-overlay">
+                    <img class="port-main-img" src="{{ form.instance.image.url }}" alt="img" >
+                  </div>
+                  <div class="port-overlay-cont">
+                    <div class="port-btn-cont">
+                      <div aria-hidden="true" class="icon_search"></div>
+                    </div>
+                  </div>
+                </a>  
+              </div>
+            {% endif %}
+            {{form.as_p}}
+            <div class="row">      
+                <div class="col-md-12">
+                    <input type="submit" value="GUARDAR" class="button rounded medium gray font-open-sans btn-block">
+                </div>
+            </div>
+        </form>
+    </div>   
+
+  </div>
+
+
+</div>
+
+{% endblock  %}
+        

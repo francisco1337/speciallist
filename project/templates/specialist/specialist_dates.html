@@ -1,0 +1,105 @@
+{% extends 'base.html' %}   
+
+
+{% load static  %}
+
+{% block contend_main %}
+<!-- PAGE TITLE SMALL -->
+<div class="page-title-cont page-title-small grey-light-bg">
+  <div class="relative container align-left">
+    <div class="row">
+      
+      <div class="col-md-8">
+        <h1 class="page-title">SOLICITUDES DE CITAS</h1>
+      </div>
+      
+      <!-- <div class="col-md-4">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a><span class="slash-divider">/</span><a href="#">PAGES & FEATURES</a><span class="slash-divider">/</span><span class="bread-current">PORTFOLIO</span>
+        </div>
+      </div> -->
+      
+    </div>
+  </div>
+</div>
+
+
+  <div class="grey-light-bg clearfix">    
+    <!-- COTENT CONTAINER -->
+    <div class="container white-bg plr-30 pt-50 pb-20 ">
+    
+      <div class="relative">
+        <!-- PORTFOLIO FILTER -->                    
+        <div class="port-filter ">
+          <a href="#" class="filter active" data-filter="*">All Projects</a>
+          <a href="#" class="filter" data-filter=".development">Development</a>
+          <a href="#" class="filter" data-filter=".design">Design</a>
+          <a href="#" class="filter" data-filter=".photography">Photography</a>
+        </div>                    
+                
+        <!-- ITEMS GRID -->
+        <ul class="port-grid port-grid-gut clearfix" id="items-grid">
+          
+
+          {% for date in dates %}
+            <!-- Item 1 -->
+            
+            <li class="port-item mix development">
+              <a href="portfolio-single1.html">
+                {% if date.user.image %}
+                  <div class="port-img-overlay"><img class="port-main-img" src="{{date.user.image.url}}" alt="img" ></div>
+                  <!-- <a href="{{object.image.url}}"><img src="{{object.image.url}}" alt="img"></a> -->
+                {% else %}
+                  <div class="port-img-overlay"><img class="port-main-img" src="{% static 'Template/html/images/portfolio/projects-5-box.jpg' %} " alt="img" ></div>
+                  <!-- <a href="blog-single-sidebar-right.html"><img src="{% static 'Template/html/images/blog/post-wide-1.jpg' %}" alt="img"></a> -->
+                {% endif %}
+              </a>
+              <div class="port-overlay-cont mt-5">
+
+                  <div class="port-title-cont">
+                    <h3><a href="portfolio-single1.html">{{date.topic}}</a></h3>
+                    <span><a href="#">{{date.user.names}}</a><span class="slash-divider">
+                  </div>
+                  <div class="port-btn-cont">
+                    <a href="{% static 'Template/html/images/portfolio/projects-5-box.jpg' %}" class="lightbox mr-20" ><div aria-hidden="true" class="icon_search"></div></a>
+                    <a href="portfolio-single1.html"><div aria-hidden="true" class="icon_link"></div></a>
+                  </div>
+
+              </div>
+            </li>
+          {% endfor %}
+            
+          
+             
+        </ul>
+      
+      </div>
+    
+    </div>
+  
+  </div>
+
+
+  
+  
+  
+
+
+
+{% endblock  %}
+        
+	        
+
+
+        
+        
+				
+        
+
+	        
+
+
+        
+        
+				
+        

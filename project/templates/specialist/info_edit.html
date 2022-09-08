@@ -1,0 +1,676 @@
+{% extends 'base.html' %}   
+
+{% load static  %}
+
+
+{% block contend_css %}
+  <style>
+    .btn-flotante {
+      font-size: 16px; /* Cambiar el tamaño de la tipografia */
+      text-transform: uppercase; /* Texto en mayusculas */
+      font-weight: bold; /* Fuente en negrita o bold */
+      color: #ffffff; /* Color del texto */
+      border-radius: 5px; /* Borde del boton */
+      letter-spacing: 2px; /* Espacio entre letras */
+      background-color: #7a7b80; /* Color de fondo */
+      padding: 18px 30px; /* Relleno del boton */
+      position: fixed;
+      top: 80px;
+      right: 40px;
+      transition: all 300ms ease 0ms;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      z-index: 99;
+    }
+    .btn-flotante:hover {
+      background-color: #fff; /* Color de fondo al pasar el cursor */
+      color: #7a7b80;
+      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-7px);
+    }
+    @media only screen and (max-width: 600px) {
+      .btn-flotante {
+      font-size: 14px;
+      padding: 12px 20px;
+      top: 100px;
+      right: 20px;
+      }
+    }
+  </style>
+{% endblock  %}
+  
+
+{% block contend_main %}
+
+<!-- COTENT CONTAINER -->
+<div class="container p-140-cont">
+  <div class="row">
+  
+    <!-- CONTENT -->
+    <div class="col-sm-8 blog-main-posts">
+      
+      <form method="POST" enctype="multipart/form-data" >{% csrf_token %}
+        {% if is_espacialist %}
+          <button type="submit" class="btn-flotante">GUARDAR</button>
+        {% endif %}
+          
+        <!-- POST ITEM -->
+        <div class="blog-post wow fadeIn pb-50">
+          <div class="post-prev-img">  
+            {% if form.instance.image %}
+              <a href="{{ form.instance.image.url }}"><img src="{{ form.instance.image.url }}" alt="img"></a>
+            {% else %}
+              <a href="blog-single-sidebar-right.html"><img src="{% static 'Template/html/images/blog/post-wide-1.jpg' %}" alt="img"></a>
+            {% endif %}
+
+            {{form.image}}
+          </div>
+            
+          <div class="post-prev-title">
+            <h3>{{form.specialism}}{{form.title}}{{object.specialism}} {{object.user.lastnames}}</h3>
+            <h4>CEDULA PROFESIONAL: {{form.professional_license}}</h4>
+          </div>
+            
+          <div class="post-prev-info">
+            2020 JULE 10
+          </div>
+          
+          {% comment %}          
+          <div class="post-prev-info">
+            <a href="{% url 'specialist_app:specialist_meeting' object.id %}">
+              <button type="button" class="btn btn-default btn-lg btn-block">Agenda una Cita</button>
+            </a>
+          </div>
+          {% endcomment %}
+
+          
+          <div class="post-prev-text">
+            {{form.description_content}}
+            
+            <blockquote class="mb-10 mt-40">
+              <p>
+                {{form.phrase}}
+              </p>
+              <footer><cite title="Source Title">{{object.title}}{{object.user.names}} {{object.user.lastnames}}</cite></footer>
+            </blockquote>
+          </div>
+            
+
+        </div>
+        {% comment %}
+        
+        <!-- Post Item carousel -->
+        <div class="wow fadeIn" >
+          <!-- CAOUSEL  -->
+          <div class="fullwidth-slider-auto owl-carousel owl-arrows-bg post-prev-img owl-white-bg pb-10" >
+          
+            <!-- ITEM -->		
+            <div class="item m-0">	
+              <div class="mb-30">
+                <img alt="about us" src="{% static 'Template/html/images/blog/post-wide-5.jpg' %}">
+              </div>
+              <div class="post-prev-title">
+                <h3><a href="blog-single-sidebar-right.html">TIME FOR MINIMALISM</a></h3>
+              </div>
+              <div class="post-prev-info mb-40">
+                JULE 10<span class="slash-divider">/</span><a href="blog-single-sidebar-right.html#comments">21 COMMENTS</a><span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">DESIGN</a>, <a href="#">DEVELOPMENT</a>
+              </div>
+            </div>
+            
+            <!-- ITEM -->		
+            <div class="item m-0">	
+              <div class="mb-30">
+                <img alt="about us" src="{% static 'Template/html/images/blog/post-wide-2.jpg' %}">
+              </div>
+              <div class="post-prev-title">
+                <h3><a href="blog-single-sidebar-right.html">NEW TRENDS IN WEB DESIGN</a></h3>
+              </div>
+              <div class="post-prev-info mb-40">
+                JULE 10<span class="slash-divider">/</span><a href="blog-single-sidebar-right.html#comments">21 COMMENTS</a><span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">DESIGN</a>, <a href="#">DEVELOPMENT</a>
+              </div>
+            </div>
+
+            <!-- ITEM -->		
+            <div class="item m-0">	
+              <div class="mb-30">
+                <img alt="about us" src="{% static 'Template/html/images/blog/post-wide-4.jpg' %}">
+              </div>
+              <div class="post-prev-title">
+                <h3><a href="blog-single-sidebar-right.html">THE SOUND OF LIFE</a></h3>
+              </div>
+              <div class="post-prev-info mb-40">
+                JULE 10<span class="slash-divider">/</span><a href="blog-single-sidebar-right.html#comments">21 COMMENTS</a><span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">DESIGN</a>, <a href="#">DEVELOPMENT</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        {% endcomment %}
+
+
+      </form>
+      
+      
+      {% comment %}
+        
+           
+      <!-- TITTLE -->
+      <div class="">
+        <h4><strong>OPINIONES</strong></h4>
+      </div>
+      
+      <div class="row">
+        
+        <!-- Post Item 1 -->
+        <div class="col-sm-6 col-md-6 wow fadeIn pb-70" >
+            
+          <div class="post-prev-img">
+            <a href="blog-single-sidebar-right.html"><img src="{% static 'Template/html/images/blog/post-prev-1.jpg' %}" alt="img"></a>
+          </div>
+            
+          <div class="post-prev-title">
+            <h3><a href="blog-single-sidebar-right.html">TIME FOR MINIMALISM</a></h3>
+          </div>
+            
+          <div class="post-prev-info">
+            JULE 10<span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a>
+          </div>
+            
+          <div class="post-prev-text">
+            
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, nostrum, cumque culpa provident aliquam commodi assumenda laudantium magnam illo nostrum. 
+          </div>
+          
+          <div class="post-prev-more-cont clearfix">
+            <div class="post-prev-more left">
+              <a href="blog-single-sidebar-right.html" class="blog-more">READ MORE</a>
+            </div>
+            <div class="right" >
+              <a href="blog-single-sidebar-right.html#comments" class="post-prev-count"><span aria-hidden="true" class="icon_comment_alt"></span><span class="icon-count">21</span></a>
+              <a href="https://1.envato.market/a1gQR" class="post-prev-count"><span aria-hidden="true" class="icon_heart_alt"></span><span class="icon-count">53</span></a>
+              <a href="#" class="post-prev-count dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >
+                <span aria-hidden="true" class="social_share"></span>
+              </a>
+              <ul class="social-menu dropdown-menu dropdown-menu-right" role="menu">
+                <li><a href="#"><span aria-hidden="true" class="social_facebook"></span></a>
+                </li>
+                <li><a href="#"><span aria-hidden="true" class="social_twitter"></span></a></li>
+                <li><a href="#"><span aria-hidden="true" class="social_dribbble"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          
+        
+        </div>
+        
+        
+
+      </div>
+      {% endcomment %}
+      
+      {% comment %}        
+      <div class="row">
+      
+        <!-- Post Item -->
+        <div class="col-sm-6">
+          <ul class="clearlist widget-posts">
+            <li class="clearfix">
+              <a href=""><img src="{% static 'Template/html/images/blog/recent/1.jpg' %}" alt="" class="widget-posts-img"></a>
+              <div class="widget-posts-descr">
+                <a href="#" title="">Fusce ultricies faucibus cursus</a>
+                <div>21 Jule<span class="slash-divider">/</span> John Doe</div> 
+              </div>
+            </li>
+
+            <li class="clearfix">
+              <a href=""><img src="{% static 'Template/html/images/blog/recent/2.jpg' %}" alt="" class="widget-posts-img"></a>
+              <div class="widget-posts-descr">
+                <a href="#" title="">Aenean bibendum ornare orci ut sodales</a>
+                <div>21 Jule<span class="slash-divider">/</span> John Doe</div> 
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Post Item -->
+        <div class="col-sm-6">
+          <ul class="clearlist widget-posts">
+            <li class="clearfix">
+              <a href=""><img src="{% static 'Template/html/images/blog/recent/4.jpg' %}" alt="" class="widget-posts-img"></a>
+              <div class="widget-posts-descr">
+                <a href="#" title="">Nulla non enim ut risus cursus </a>
+                <div>21 Jule<span class="slash-divider">/</span> John Doe</div> 
+              </div>
+            </li>
+
+            <li class="clearfix">
+              <a href=""><img src="{% static 'Template/html/images/shop/recent/2.jpg' %}" alt="" class="widget-posts-img"></a>
+              <div class="widget-posts-descr">
+                <a href="#" title="">Nam rhoncus finibus est sed interdum</a>
+                <div>21 Jule<span class="slash-divider">/</span> John Doe</div> 
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+      {% endcomment %}
+
+      
+      {% comment %}        
+      <!-- ADS -->
+      <div class="text-center mt-30 mb-50">
+        <a href="https://1.envato.market/a1gQR"><img class="" src="{% static 'Template/html/images/ads720.jpg' %}" alt="img"></a>
+      </div>
+      {% endcomment %}
+
+      
+    </div>
+
+
+    <!-- SIDEBAR -->
+    <div class="col-sm-4 col-md-3 col-md-offset-1">
+      
+      <!-- ADS -->
+      <!-- <div class="text-center grey-light-bg mb-40">
+        <a href="https://1.envato.market/a1gQR"><img class="" src="{% static 'Template/html/images/ads2.jpg' %}" alt="img"></a>
+      </div> -->
+      
+      <!-- SEARCH -->
+      <!-- <div class="widget">
+        <form class="form-search widget-search-form" action="page-search-results.html" method="get">
+          <input type="text" name="q" class="input-search-widget" placeholder="Search">
+          <button class="" type="submit" title="Start Search">
+            <span aria-hidden="true" class="icon_search"></span>
+          </button>
+        </form>
+      </div> -->
+      
+      <!-- WIDGET -->
+      
+      {% comment %}        
+      <div class="widget">
+        
+        <h5 class="widget-title">Top Categories</h5>
+        
+        <div class="widget-body">
+          <ul class="clearlist widget-menu">
+            <li>
+              <a href="#" title="">Branding</a><small><span class="slash-divider">/</span> 10</small>
+            </li>
+            <li>
+              <a href="#" title="">Development</a><small><span class="slash-divider">/</span> 21</small>
+            </li>
+            <li>
+              <a href="#" title="">Technology </a><small><span class="slash-divider">/</span> 11</small>
+            </li>
+            <li>
+              <a href="#" title="">Social Media</a><small><span class="slash-divider">/</span> 16</small>
+            </li>
+            <li>
+              <a href="#" title="">Entertainment </a><small><span class="slash-divider">/</span> 8</small>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+      {% endcomment %}
+
+      {% comment %}
+      <!-- WIDGET -->
+      <div class="widget">
+        
+        <div class="tabs-3">
+          <ul class="nav nav-tabs bootstrap-tabs mb-30">
+            <li class="active"><a href="#popular-tab" class="a-inv" data-toggle="tab">POPULAR</a></li>
+            <li><a href="#recent-tab" class="a-inv" data-toggle="tab">RECENT</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active" id="popular-tab">
+              <div class="widget-body">
+                <ul class="clearlist widget-posts">
+                  <li class="clearfix">
+                    <a href=""><img src="{% static 'Template/html/images/blog/recent/1.jpg' %}" alt="" class="widget-posts-img"></a>
+                    <div class="widget-posts-descr">
+                      <a href="#" title="">TIME FOR MINIMALISM</a>
+                      <div>21 Jule<span class="slash-divider">/</span> John Doe</div> 
+                    </div>
+                  </li>
+
+                  <li class="clearfix">
+                    <a href=""><img src="{% static 'Template/html/images/blog/recent/2.jpg' %}" alt="" class="widget-posts-img"></a>
+                    <div class="widget-posts-descr">
+                      <a href="#" title="">NEW TRENDS IN WEB</a>
+                      <div>21 Jule<span class="slash-divider">/</span> John Doe</div> 
+                    </div>
+                  </li>
+
+                  <li class="clearfix">
+                    <a href=""><img src="{% static 'Template/html/images/blog/recent/3.jpg' %}" alt="" class="widget-posts-img"></a>
+                    <div class="widget-posts-descr">
+                      <a href="#" title="">THE SOUND OF LIFE</a>
+                      <div>21 Jule<span class="slash-divider">/</span> John Doe</div> 
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="recent-tab">
+              <div class="widget-body">
+                <ul class="clearlist widget-posts">
+                  <li class="clearfix">
+                    <a href=""><img src="{% static 'Template/html/images/blog/recent/4.jpg' %}" alt="" class="widget-posts-img"></a>
+                    <div class="widget-posts-descr">
+                      <a href="#" title=""> NULLA VITAE IMPERD</a>
+                      <div>21 Jule<span class="slash-divider">/</span> John Doe</div> 
+                    </div>
+                  </li>
+
+                  <li class="clearfix">
+                    <a href=""><img src="{% static 'Template/html/images/shop/recent/2.jpg' %}" alt="" class="widget-posts-img"></a>
+                    <div class="widget-posts-descr">
+                      <a href="#" title="">TAM EU QUAM </a>
+                      <div>21 Jule<span class="slash-divider">/</span> John Doe</div> 
+                    </div>
+                  </li>
+
+                  <li class="clearfix">
+                    <a href=""><img src="{% static 'Template/html/images/shop/recent/3.jpg' %}" alt="" class="widget-posts-img"></a>
+                    <div class="widget-posts-descr">
+                      <a href="#" title="">ALIQUAM AC LUCTUS</a>
+                      <div>21 Jule<span class="slash-divider">/</span> John Doe</div> 
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% endcomment %}
+      
+      <!-- WIDGET -->
+      <!-- <div class="widget">
+                        
+        <h5 class="widget-title">Tags</h5>
+        
+        <div class="widget-body">
+          <div class="tags">
+            <a href="">Design</a>
+            <a href="">Development</a>
+            <a href="">Minimal</a>
+            <a href="">Branding</a>
+            <a href="">Unique</a>
+            <a href="">Clean</a>
+            <a href="">UI &amp; UX</a>
+          </div>
+        </div>
+        
+      </div> -->
+      
+      {% comment %}        
+      <!-- WIDGET -->
+      <div class="widget">
+        
+        <h5 class="widget-title">Archive</h5>
+        
+        <div class="widget-body">
+          <ul class="clearlist widget-menu">
+            <li>
+              <a href="#" title="">October 2020</a><small><span class="slash-divider">/</span> 10</small>
+            </li>
+            <li>
+              <a href="#" title="">July 2020</a><small><span class="slash-divider">/</span> 21</small>
+            </li>
+            <li>
+              <a href="#" title="">June 2020 </a><small><span class="slash-divider">/</span> 11</small>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
+
+      {% endcomment %}
+
+      <!-- ADS -->
+      <!-- <div class="text-center grey-light-bg mb-40">
+        <a href="https://1.envato.market/a1gQR"><img class="" src="{% static 'Template/html/images/ads2.jpg' %}" alt="img"></a>
+      </div> -->
+      
+    </div>
+    
+  </div>
+  
+  {% comment %}    
+  <div class="row">
+    <div class="col-md-12 blog-main-posts">
+      <!-- TITTLE -->
+      <div class="heading-line h4-line mb-20">
+        <h4><strong>OTHER NEWS</strong></h4>
+      </div>
+                
+      <!-- CONTENT -->
+      <div class="row">
+      
+        <!-- Post Item -->
+        <div class="col-sm-6 col-md-3 wow fadeIn pb-70">
+          <div class="post-prev-img">
+            <a href="blog-single-sidebar-right.html"><img src="{% static 'Template/html/images/portfolio/projects-1.jpg' %}" alt="img"></a>
+          </div>
+            
+          <div class="post-prev-title">
+            <h3><a href="blog-single-sidebar-right.html">TIME FOR MINIMALISM</a></h3>
+          </div>
+            
+          <div class="post-prev-info">
+            JULE 10<span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">SPORT</a>
+          </div>
+
+       </div>
+                      
+        <!-- Post Item -->
+        <div class="col-sm-6 col-md-3 wow fadeIn pb-70">
+          <div class="post-prev-img">
+            <a href="blog-single-sidebar-right.html"><img src="{% static 'Template/html/images/portfolio/projects-2.jpg' %}" alt="img"></a>
+          </div>
+            
+          <div class="post-prev-title">
+            <h3><a href="blog-single-sidebar-right.html">ENIM UT RISUS</a></h3>
+          </div>
+            
+          <div class="post-prev-info">
+            JULE 10<span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">DEVELOPMENT</a>
+          </div>
+
+        </div>
+                      
+        <!-- Post Item -->
+        <div class="col-sm-6 col-md-3 wow fadeIn pb-70">
+          <div class="post-prev-img">
+            <a href="blog-single-sidebar-right.html"><img src="{% static 'Template/html/images/portfolio/projects-3.jpg' %}" alt="img"></a>
+          </div>
+            
+          <div class="post-prev-title">
+            <h3><a href="blog-single-sidebar-right.html">RISUS CURSUS AMET</a></h3>
+          </div>
+            
+          <div class="post-prev-info">
+            JULE 10<span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">DESIGN</a>
+          </div>
+
+        </div>
+        
+        <!-- Post Item carousel -->
+        <div class="col-sm-6 col-md-3 wow fadeIn pb-70" >
+            
+          <!-- CAOUSEL  -->
+                        <div class="fullwidth-slider owl-carousel owl-dark-bg owl-pag-2 owl-arrows-bg post-prev-img" >
+          
+            <!-- ITEM -->		
+                          <div class="item m-0">	
+                            <div>
+                              <img alt="about us" src="{% static 'Template/html/images/portfolio/projects-4.jpg' %}">
+                            </div>
+                          </div>
+            
+            <!-- ITEM -->		
+                          <div class="item m-0">	
+                            <div>
+                              <img alt="about us" src="{% static 'Template/html/images/portfolio/projects-5.jpg' %}">
+                            </div>
+                          </div>
+        
+            <!-- ITEM -->		
+                          <div class="item m-0">	
+                            <div>
+                              <img alt="about us" src="{% static 'Template/html/images/portfolio/projects-1.jpg' %}">
+                            </div>
+                          </div>
+            
+                        </div>
+            
+          <div class="post-prev-title">
+            <h3><a href="blog-single-sidebar-right.html">POST WITH SLIDER GALLERY</a></h3>
+          </div>
+            
+          <div class="post-prev-info">
+            DECEMBER 21<span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">CULTURE</a>
+          </div>
+
+        </div>
+
+      </div>  
+      
+      <div class="row">
+
+        <!-- Post Item lightbox -->
+        <div class="col-sm-6 col-md-3 wow fadeIn pb-70">
+          <div class="post-prev-img">
+            
+            <div class="lightbox-item">
+              <a href="{% static 'Template/html/images/content/blog-big-1.jpg' %}" class="lightbox">
+                <div class="port-img-overlay">
+                  <img class="port-main-img" src="{% static 'Template/html/images/portfolio/projects-6.jpg' %}" alt="img">
+                </div>
+                <div class="port-overlay-cont">
+                  <div class="port-btn-cont">
+                    <div aria-hidden="true" class="icon_search"></div>
+                  </div>
+                </div>
+              </a>  
+            </div>
+            
+          </div>
+            
+          <div class="post-prev-title">
+            <h3><a href="blog-single-sidebar-right.html">POST WITH LIGHTBOX</a></h3>
+          </div>
+            
+          <div class="post-prev-info">
+            JULE 10<span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">DESIGN</a>
+          </div>
+
+        </div>
+
+        <!-- Post Item lightbox -->
+        <div class="col-sm-6 col-md-3 wow fadeIn pb-70">
+          <div class="post-prev-img">
+            
+            <div class="lightbox-item">
+              <a href="{% static 'Template/html/images/content/blog-big-1.jpg' %}" class="lightbox">
+                <div class="port-img-overlay">
+                  <img class="port-main-img" src="{% static 'Template/html/images/portfolio/projects-7.jpg' %}" alt="img">
+                </div>
+                <div class="port-overlay-cont">
+                  <div class="port-btn-cont">
+                    <div aria-hidden="true" class="icon_search"></div>
+                  </div>
+                </div>
+              </a>  
+            </div>
+            
+          </div>
+            
+          <div class="post-prev-title">
+            <h3><a href="blog-single-sidebar-right.html">POST WITH LIGHTBOX</a></h3>
+          </div>
+            
+          <div class="post-prev-info">
+            JULE 10<span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">CULTURE</a>
+          </div>
+
+        </div>
+
+        <!-- Post Item -->
+        <div class="col-sm-6 col-md-3 wow fadeIn pb-70">
+          <div class="post-prev-img">
+            <a href="blog-single-sidebar-right.html"><img src="{% static 'Template/html/images/portfolio/projects-5.jpg' %}" alt="img"></a>
+          </div>
+            
+          <div class="post-prev-title">
+            <h3><a href="blog-single-sidebar-right.html">TIME FOR MINIMALISM</a></h3>
+          </div>
+            
+          <div class="post-prev-info">
+            JULE 10<span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">SPORT</a>
+          </div>
+       </div>
+        
+        <!-- Post Item carousel -->
+        <div class="col-sm-6 col-md-3 wow fadeIn pb-70" >
+            
+          <!-- CAOUSEL  -->
+                        <div class="fullwidth-slider owl-carousel owl-dark-bg owl-pag-2 owl-arrows-bg post-prev-img" >
+          
+            <!-- ITEM -->		
+                          <div class="item m-0">	
+                            <div>
+                              <img alt="about us" src="{% static 'Template/html/images/portfolio/projects-8.jpg' %}">
+                            </div>
+                          </div>
+            
+            <!-- ITEM -->		
+                          <div class="item m-0">	
+                            <div>
+                              <img alt="about us" src="{% static 'Template/html/images/portfolio/projects-9.jpg' %}">
+                            </div>
+                          </div>
+        
+            <!-- ITEM -->		
+                          <div class="item m-0">	
+                            <div>
+                              <img alt="about us" src="{% static 'Template/html/images/portfolio/projects-5.jpg' %}">
+                            </div>
+                          </div>
+            
+                        </div>
+            
+          <div class="post-prev-title">
+            <h3><a href="blog-single-sidebar-right.html">POST WITH SLIDER GALLERY</a></h3>
+          </div>
+            
+          <div class="post-prev-info">
+            DECEMBER 21<span class="slash-divider">/</span><a href="https://1.envato.market/a1gQR">JOHN DOE</a><span class="slash-divider">/</span><a href="#">PEOPLES</a>
+          </div>
+
+        </div>
+                    
+      </div>
+    
+    </div>
+  </div>
+  {% endcomment %}
+
+
+</div>
+
+{% endblock  %}
+
+{% block contend_js %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% endblock  %}
+        
+	        

@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contend_css %}
+  <style>
+    .btn-flotante {
+      font-size: 16px; /* Cambiar el tamaño de la tipografia */
+      text-transform: uppercase; /* Texto en mayusculas */
+      font-weight: bold; /* Fuente en negrita o bold */
+      color: #ffffff; /* Color del texto */
+      border-radius: 5px; /* Borde del boton */
+      letter-spacing: 2px; /* Espacio entre letras */
+      background-color: #7a7b80; /* Color de fondo */
+      padding: 18px 30px; /* Relleno del boton */
+      position: fixed;
+      top: 80px;
+      right: 40px;
+      transition: all 300ms ease 0ms;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      z-index: 99;
+      width: 250px;
+    }
+    .btn-flotante:hover {
+      background-color: #fff; /* Color de fondo al pasar el cursor */
+      color: #7a7b80;
+      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-7px);
+    }
+    @media only screen and (max-width: 600px) {
+      .btn-flotante {
+      font-size: 14px;
+      padding: 12px 20px;
+      top: 100px;
+      right: 20px;
+      width: 190px;
+
+      }
+    }
+    .btn-flotante-2 {
+      font-size: 16px; /* Cambiar el tamaño de la tipografia */
+      text-transform: uppercase; /* Texto en mayusculas */
+      font-weight: bold; /* Fuente en negrita o bold */
+      color: #ffffff; /* Color del texto */
+      border-radius: 5px; /* Borde del boton */
+      letter-spacing: 2px; /* Espacio entre letras */
+      background-color: #7a7b80; /* Color de fondo */
+      padding: 18px 30px; /* Relleno del boton */
+      position: fixed;
+      top: 170px;
+      right: 40px;
+      transition: all 300ms ease 0ms;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      z-index: 99;
+      width: 250px;
+
+    }
+    .btn-flotante-2:hover {
+      background-color: #fff; /* Color de fondo al pasar el cursor */
+      color: #7a7b80;
+      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-7px);
+    }
+    @media only screen and (max-width: 600px) {
+      .btn-flotante-2 {
+      font-size: 14px;
+      padding: 12px 20px;
+      top: 180px;
+      right: 20px;
+      width: 190px;
+
+      }
+    }
+  </style>
+{% endblock  %}
+{% block contend_main %}
+<!-- CONTENT -->
+<div class="page-section p-140-cont">
+
+
+    {% if object.user == user %}
+        <a href="{% url 'specialist_app:info_specialist_edit' specialistInfo.id %}" class="btn-flotante">EDITAR PERFIL</a>
+        <a href="{% url 'specialist_app:specialist_clinic_edit' spaialistClinic.id %}" class="btn-flotante-2">EDITAR CLINICA</a>
+      {% endif %}
+    <div class="container">
+        <div class="row">
+
+            <!-- ITEM PHOTO -->
+            <div class="col-md-4 col-sm-12 mb-50">
+
+                <div class="post-prev-img popup-gallery">
+                    {% if object.principal_image %}
+                        <a href="{{object.principal_image.url}}"><img src="{{object.principal_image.url}}" alt="img"></a>
+                    {% else %}
+                        <a href="{% static 'Template/html/images/shop/items/1.jpg' %}"><img src="{% static 'Template/html/images/shop/items/1.jpg' %}" alt="img"></a>
+                    {% endif %}
+            
+                </div>
+
+                {% comment %}                  
+                <div class="sale-label-cont">
+                    <span class="sale-label label-danger bg-red">SALE</span>
+                </div>
+                {% endcomment %}
+
+
+                <div class="row">
+                    <div class="popup-gallery">
+
+                        <div class="col-xs-4 post-prev-img">
+                            {% if object.second_image %}
+                                <a href="{{object.second_image.url}}"><img src="{{object.second_image.url}}" alt="img"></a>
+                            {% else %}
+                                <a href="{% static 'Template/html/images/shop/items/1-1.jpg' %}"><img src="{% static 'Template/html/images/shop/items/1-1-box.jpg' %}" alt="img"></a>
+                            {% endif %}        
+                        </div>
+
+                        <div class="col-xs-4 post-prev-img">
+                            {% if object.third_image %}
+                                <a href="{{object.third_image.url}}"><img src="{{object.third_image.url}}" alt="img"></a>
+                            {% else %}
+                                <a href="{% static 'Template/html/images/shop/items/1-2.jpg' %}"><img src="{% static 'Template/html/images/shop/items/1-2-box.jpg' %}" alt="img"></a>
+                            {% endif %}
+                        </div>
+
+                        <div class="col-xs-4 post-prev-img">
+                            {% if object.fourth_image %}
+                                <a href="{{object.fourth_image.url}}"><img src="{{object.fourth_image.url}}" alt="img"></a>
+                            {% else %}
+                                <a href="{% static 'Template/html/images/shop/items/1-3.jpg' %}"><img src="{% static 'Template/html/images/shop/items/1-3-box.jpg' %}" alt="img"></a>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            
+            
+            <!-- CONTENT -->
+            <div class="col-md-7 col-sm-12 col-md-offset-1 mb-50">
+
+                <h3 class="mt-0 mb-30">{{ object.clinic }}</h3>
+
+                <hr class="mt-0 mb-30">                
+
+                <div class="font-12 lh-20 mb-30">
+                    <div>Estado: {{ object.state.state }}<a class="a-dark" href="#"></a></div>
+                    <div>Municipio: {{ object.town.town }}<a class="a-dark" href="#"></a></div>
+                    <div>Codigo Postal: {{ object.postal_code }} <a class="a-dark" href="#"></a></div>
+                    <div>Colonia: {{ object.suburb }}<a class="a-dark" href="#"></a></div>
+                    <div>Calle: {{ object.Street }}<a class="a-dark" href="#"></a></div>
+                    <div>Numero: {{ object.number }}<a class="a-dark" href="#"></a></div>
+                    {% comment %}                      
+                    <div>Tags: <a class="a-dark" href="#">WOMEN'S SHOES</a>, <a class="a-dark" href="#">blue shirt</a>,
+                        <a class="a-dark" href="#">men</a></div>
+                    {% endcomment %}
+                </div>
+
+                <hr class="mt-0 mb-10">
+
+
+                <div >
+                    <!-- Toggle -->
+                    <dl class="toggle">
+                      <dt>
+                        <a href="#">HORARIOS</a>
+                      </dt>
+                      <dd>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td scope="row">LUNES</td>
+                                    <td>{{schedule.lunes.monday_start}}</td>
+                                    <td>{{schedule.lunes.monday_end}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">MARTES</td>
+                                    <td>{{schedule.martes.tuesday_start}}</td>
+                                    <td>{{schedule.martes.tuesday_end}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">MIERCOLES</td>
+                                    <td>{{schedule.miercoles.wednesday_start}}</td>
+                                    <td>{{schedule.miercoles.wednesday_end}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">JUEVES</td>
+                                    <td>{{schedule.jueves.thursday_start}}</td>
+                                    <td>{{schedule.jueves.thursday_end}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">VIERNES</td>
+                                    <td>{{schedule.viernes.friday_start}}</td>
+                                    <td>{{schedule.viernes.friday_end}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">SABADO</td>
+                                    <td>{{schedule.sabado.saturday_start}}</td>
+                                    <td>{{schedule.sabado.saturday_end}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">DOMINGO</td>
+                                    <td>{{schedule.domingo.sunday_start}}</td>
+                                    <td>{{schedule.domingo.sunday_end}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </dd>
+                    </dl>
+                    <!-- End Toggle -->
+                </div>
+
+                <hr class="mt-0 mb-30">
+
+                <div class="mb-30">
+                    {{ object.map_iframe|safe }}
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mb-100">
+        <div>
+
+            <div class="tabs-3">
+                <ul class="nav nav-tabs xs-tabs-transform bootstrap-tabs">
+                    <li class="active">
+                        <a href="#one" data-toggle="tab">DESCRIPCIÓN</a>
+                    </li>
+                    <li>
+                        <a href="#two" data-toggle="tab">OTROS DATOS</a>
+                    </li>
+                </ul>
+                <!-- END nav tabs -->
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="one">
+                        <p>
+                            {{object.description|safe}}
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="two">
+                        {{object.other_Data|safe}}
+
+                        
+                        {% comment %}
+                            
+                            
+                        <table class="table table-striped table-bordered mt-30">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Weight</th>
+                                    <td>0.15 kg</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Size</th>
+                                    <td>XXL, XL, L, M, S</td>
+                                <tr>
+                                </tr>
+                                <th scope="row">Colors</th>
+                                <td>Blue, Black, White</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Fabric</th>
+                                    <td>Cotton, Silk & Synthetic</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Warranty</th>
+                                    <td>3 Months</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        {% endcomment %}
+
+                    </div>
+                </div>
+                <!-- END tab panes -->
+            </div>
+            <!-- END tabs  -->
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

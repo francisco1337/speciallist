@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}   
+
+{% block contend_main %}
+<!-- COTENT CONTAINER -->
+<div class="container p-160-cont pt-sm-60">
+
+  <!-- LOGIN / REGISTER CONTAINER -->
+  <div class="row">
+    
+    <div class="col-md-12 ">
+      
+      {% if not is_espacialist %}
+        <div class="alert alert-success">
+          <a href="{% url 'specialist_app:specialist_register' %}">
+            <span aria-hidden="true" class="alert-icon icon_like"></span>¿DESEAS OFRECER TUS SERVICIOS PROFESIONALES? REGISTRATE <strong>AQUI</strong>.
+          </a>
+        </div>
+      {% endif %}
+        
+      
+        
+      
+    </div>   
+
+  </div>
+
+</div>
+
+{% endblock  %}
+        
+	        
+
+
+        
+        
+				
+        

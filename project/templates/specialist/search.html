@@ -1,0 +1,113 @@
+
+{% extends 'base.html' %}   
+
+{% block contend_main %}
+<!-- COTENT CONTAINER -->
+
+  
+      
+      <div class="header-transporent-bg-black">				
+				
+        <!-- STATIC MEDIA IMAGE -->
+        <div id="index-link" class="sm-img-bg-fullscr parallax-section " style="background-image: url(images/static-media/travel.jpg)" data-stellar-background-ratio="0.5">
+          <div class="container sm-content-cont js-height-fullscr">
+            <div class="sm-cont-middle">
+
+							<!-- OPACITY container -->
+							<div class="opacity-scroll2">
+
+						  	<!-- LAYER NR. 1 -->
+                
+                <div class="light-60-wide font-xxs-32-wide mt-0 sm-mb-20 font-norm relative" >
+						      LOS ESPECIALISTAS DEL MUNDO EN UN SOLO LUGAR
+						  	</div>
+
+						  	<!-- LAYER NR. 2 -->
+						  	<!-- <div class="norm-16-wide hide-0-736 mb-210 relative font-norm">
+                  BUS AND GUIDED TOURS, DIFFERENT PROGRAMS, BEST PRICE
+						  	</div> -->
+
+							</div>
+
+            </div>
+          </div>
+          <!-- SCROLL ICON -->
+					<div class="local-scroll-cont">
+						<a href="#hot-link" class="scroll-down smooth-scroll">
+              <div class="icon icon-arrows-down"></div>
+            </a>  
+					</div>
+        </div>	
+				
+      </div>
+        
+      <!-- TABS FORMS -->  
+      <div class="mt-min-500 mt-xs-0 relative">
+        <div class="container p-140-cont pb-40">
+          <div class="tabs-3">
+          
+            
+            
+            <!-- Tab panes -->
+            <div class="tab-content tab-content-opacity travel-form clearfix">
+            
+                <!-- Tab 1 -->
+                <div class="tab-pane fade bg-opacity in active" id="one">
+                  <form  method="post">{% csrf_token %}
+                  
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 ">
+                        <div class="form-group">
+                          <label>Ubicación</label>
+                          <input class="" type="text" name="city" placeholder="" value="Aguascalientes">
+                        </div>
+                      </div>
+                      
+                      <div class="col-lg-6 col-md-6 col-sm-6 ">
+                        <div class="form-group">
+                          <label>Especialidad</label>
+                          <div class="select-style">
+                            <select name="specialism">
+                              {% for specialism in specialisms %}
+                                <option value="{{specialism}}">{{specialism}}</option>
+                              {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>  
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 mt-20 mt-xs-40  text-xs-center">
+                        <button class="medium button gray ">SEARCH</button>
+                      </div>
+                      
+                     
+                    </div>
+                    
+                  </form>
+                </div>
+                
+                
+
+            </div>
+            <!-- END tab panes -->
+            
+          </div>
+          <!-- END tabs  -->
+        </div>
+      </div>
+
+      
+        
+
+
+
+{% endblock  %}
+        
+	        
+
+
+        
+        
+				
+        

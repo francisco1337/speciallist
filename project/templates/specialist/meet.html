@@ -1,0 +1,84 @@
+{% extends 'base.html' %}   
+{% load static %}
+
+
+{% block contend_css %}
+<!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css"> -->
+<link href="{% static 'css/icons/icomoon/styles.min.css' %}" rel="stylesheet" type="text/css">
+<!-- <link href="{% static 'css/bootstrap.min.css' %} " rel="stylesheet" type="text/css"> -->
+<!-- <link href="{% static 'css/bootstrap_limitless.min.css' %} " rel="stylesheet" type="text/css"> -->
+<!-- <link href="{% static 'css/layout.min.css' %} " rel="stylesheet" type="text/css"> -->
+<link href="{% static 'css/components.min.css' %} " rel="stylesheet" type="text/css">
+<link href="{% static 'css/colors.min.css' %} " rel="stylesheet" type="text/css">
+
+
+<!-- Core JS files -->
+<script src="{% static 'js/main/jquery.min.js' %}"></script>
+<script src="{% static 'js/main/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/plugins/loaders/blockui.min.js' %}"></script>
+<!-- /core JS files -->
+
+
+{% endblock %}
+  
+
+{% block contend_main %}
+<!-- COTENT CONTAINER -->
+<div class="container p-160-cont pt-sm-60">
+
+  <!-- LOGIN / REGISTER CONTAINER -->
+  <div class="row">
+    
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 tabs-6">
+      <b>AGENDAR CITA PARA:</b> {{user.names}} {{user.lastnames}}
+      <form method="POST">{% csrf_token %}
+          {{form.as_p}}
+        
+          <input  type="text" class="pickadate-limits" placeholder="Try me&hellip;">
+          <input  type="text" class="pickadate-disable" placeholder="Try me&hellip;">
+          <style>
+            .picker__day--disabled 
+            {
+              color:red;
+            }
+          </style>
+          <input  type="text" class="pickadate-disable-range" placeholder="Try me&hellip;">
+          
+          <button type="submit">Agendar Cita</button>
+      </form>
+        
+      
+    </div>   
+
+  </div>
+
+</div>
+
+{% endblock  %}
+
+
+{% block contend_js %}
+<script src="{% static 'js/main/jquery.min.js' %} "></script>
+<script src="{% static 'js/main/bootstrap.bundle.min.js' %} "></script>
+<script src="{% static 'js/plugins/loaders/blockui.min.js' %} "></script>
+
+
+
+<!-- Theme JS files -->
+<script src="{% static 'js/plugins/ui/moment/moment.min.js' %}"></script>
+<script src="{% static 'js/plugins/pickers/daterangepicker.js' %}"></script>
+<script src="{% static 'js/plugins/pickers/anytime.min.js' %}"></script>
+<script src="{% static 'js/plugins/notifications/jgrowl.min.js' %}"></script>
+<script src="{% static 'js/plugins/pickers/pickadate/picker.js' %} "></script>
+<script src="{% static 'js/plugins/pickers/pickadate/picker.date.js' %} "></script>
+<script src="{% static 'js/plugins/pickers/pickadate/picker.time.js' %} "></script>
+<script src="{% static 'js/plugins/pickers/pickadate/legacy.js' %} "></script>
+
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/demo_pages/picker_date.js' %} "></script>
+
+<!-- /theme JS files -->
+{% endblock  %}
+  
+        
+	        
